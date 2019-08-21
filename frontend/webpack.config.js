@@ -4,7 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
+  mode: 'development',
   entry: {one: './src/one.js'},
   output: {
     filename: 'static/[name].[hash].js',
