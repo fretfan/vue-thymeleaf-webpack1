@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+<h2>Page 1</h2>
+<h2 class="hello-title" th:text="'Hello, ' + ${name} + '!'"></h2>
+<h3 id="one-msg">Default</h3>
+<button onclick="wan.setHelloMsg();">SetMsg</button>
+<div id="vue-app">
+    <hello count="123"/>
+</div>
+</div>
+<!--ALOOO-->
+<!--<script src="/dist/one.bundle.js"></script> OLOL-->
+</body>
+</html>
