@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     data() {
         return {
@@ -14,6 +16,16 @@ export default {
     },
     props: {
         count: String
+    },
+    methods: {
+        getMessage() {
+            axios.get('/test-message').then(resp => {
+                this.helloMsg = resp.data;
+            });
+        }
+    },
+    mounted() {
+        this.getMessage();
     }
 }
 </script>
