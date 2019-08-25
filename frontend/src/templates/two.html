@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 <body>
+    <script>
+        $(function() {
+            console.log('jquery good');
+        });
+        do1();
+        do2();
+        do3();
+        do4();
+    </script>
     <h2> Page 2</h2>
-        <h3 id="two-msg">Default</h3>
-    <button onclick="setHelloMsg();">SetMsg</button>
-    <script src="two.js"></script>
+    <h3 id="two-msg">Default</h3>
 </body>
 </html>
