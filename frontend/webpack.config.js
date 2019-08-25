@@ -6,6 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: {one: './src/one.js'},
+  devtool: 'source-map',
   output: {
     filename: 'static/[name].[hash].js',
     library: 'wan',
