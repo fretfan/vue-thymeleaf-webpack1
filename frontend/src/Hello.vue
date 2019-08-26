@@ -25,7 +25,7 @@ export default {
         }
     },
     mounted() {
-        this.getMessage();
+        setTimeout(() => this.getMessage(), 1000);
     }
 }
 </script>
