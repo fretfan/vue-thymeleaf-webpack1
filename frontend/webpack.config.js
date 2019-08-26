@@ -12,7 +12,8 @@ module.exports = {
     },
 //  devtool: 'source-map',
     output: {
-        filename: 'static/[name].[hash].js',
+        // filename: 'static/[name].[hash].js', //use hash for prod build
+        filename: 'static/[name].js',
         library: '[name]',
         path: path.resolve(__dirname, '../src/main/resources/dist')
     },
@@ -38,14 +39,12 @@ module.exports = {
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             template: 'src/templates/one.html',
-            // todo should accept [name].html
             filename: 'one.html',
             inject: 'body',
             chunks: ['one']
         }),
         new HtmlWebpackPlugin({
             template: 'src/templates/two.html',
-            // todo should accept [name].html
             filename: 'two.html',
             inject: 'body',
             chunks: ['two']
