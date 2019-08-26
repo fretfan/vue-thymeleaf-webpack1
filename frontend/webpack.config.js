@@ -52,10 +52,11 @@ module.exports = {
         new MergeIntoSingleFilePlugin({
             files: [{
                 src: [
-                    'src/js-files/1.js',
-                    'src/js-files/2.js',
-                    'src/js-files/3.js',
-                    'src/js-files/4.js',
+                    'src/js-includes/1.js',
+                    'src/js-includes/2.js',
+                    'src/js-includes/3.js',
+                    'src/js-includes/4.js',
+                    'src/js-includes/libs/jquery-3.4.1.js',
                 ],
                 dest: 'static/bundle.js'
             }]
