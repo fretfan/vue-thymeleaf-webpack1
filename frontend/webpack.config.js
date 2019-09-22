@@ -31,7 +31,12 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: 'html-loader'
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
             }
+
         ],
     },
     plugins: [
@@ -65,5 +70,12 @@ module.exports = {
 //                              ]
 
         }),
+        // new MiniCssExtractPlugin({
+        //     // Options similar to the same options in webpackOptions.output
+        //     // all options are optional
+        //     filename: '[name].css',
+        //     chunkFilename: '[id].css',
+        //     ignoreOrder: false, // Enable to remove warnings about conflicting order
+        // }),
     ]
 };

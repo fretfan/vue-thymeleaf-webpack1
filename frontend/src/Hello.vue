@@ -31,6 +31,7 @@ export default {
 </script>
 <style scoped>
     span {
-        color:red;
+        color:blue;
+        font-style: italic;
     }
-<style>
+</style>

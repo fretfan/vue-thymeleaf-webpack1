@@ -1,4 +1,4 @@
-import $ from 'jquery';
+// import $ from 'jquery';
 
 export function setHelloMsg() {
     var msg = document.getElementById('two-msg');
