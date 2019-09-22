@@ -29,9 +29,11 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
+    $base-color: cyan;
     span {
-        color:blue;
+        color: $base-color;
         font-style: italic;
+        font-weight: bold
     }
 </style>
