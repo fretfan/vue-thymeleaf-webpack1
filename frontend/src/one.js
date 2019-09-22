@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import Vue from 'vue';
 import Hello from './Hello.vue';
+import './css/legacy-style.css';
 
 var app = new Vue({
   el: '#vue-app',
@@ -8,7 +9,7 @@ var app = new Vue({
     console.log('hello');
   },
   components: {Hello}
-})
+});
 
 export function setHelloMsg() {
     var msg = document.getElementById('one-msg');

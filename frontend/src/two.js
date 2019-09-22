@@ -1,4 +1,6 @@
 // import $ from 'jquery';
+import './css/legacy-style.css';
+
 
 export function setHelloMsg() {
     var msg = document.getElementById('two-msg');
