@@ -30,10 +30,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-    $base-color: cyan;
-    span {
-        color: $base-color;
-        font-style: italic;
-        font-weight: bold
-    }
+    @import "css/hello-style.scss";
 </style>
