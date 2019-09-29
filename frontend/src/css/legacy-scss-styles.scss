@@ -3,3 +3,11 @@
     font-weight: bold;
     font-style: italic;
 }
+
+.heavy-image {
+    background-image: url(../assets/nature.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width:100px;
+    height:100px;
+}
