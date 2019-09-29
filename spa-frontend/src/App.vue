@@ -2,6 +2,9 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <hr/>
+    <h2 style="color:red;">Webpack tests</h2>
+    <div>Icon: <img alt="test icon" src="@/assets/pointer-icon.svg" height="30px" width="30px"></div>
     <div>
         Message from backed: {{theMessage}}
     </div>
@@ -19,7 +22,7 @@ export default {
   name: 'app',
   data() {
     return {
-        theMessage: 'XX'
+        theMessage: 'No response'
     }
   },
   created(){
