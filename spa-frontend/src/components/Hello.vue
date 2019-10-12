@@ -30,5 +30,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-    @import "css/hello-style.scss";
+    @import "../css/hello-style";
 </style>

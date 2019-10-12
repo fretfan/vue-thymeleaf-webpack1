@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import Vue from 'vue';
-import Hello from './Hello.vue';
+import Hello from '../../spa-frontend/src/components/Hello.vue';
 import './css/legacy-style.css';
 import './css/legacy-scss-styles.scss';
 
