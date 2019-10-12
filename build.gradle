@@ -4,6 +4,13 @@ plugins {
 	id 'java'
 }
 
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+}
+
 group = 'vue-webpack-thymeleaf'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
@@ -16,4 +23,5 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
 }
