@@ -24,7 +24,7 @@ module.exports = {
     },
     optimization: {
         splitChunks: {
-            chunks: 'all'
+            chunks: 'all' // adjust HtmlWebpackPlugin.chunks to include correct chunks into template
         }
     },
     module: {
@@ -68,19 +68,19 @@ module.exports = {
         ],
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        new CleanWebpackPlugin(), // clear output folder before build
         new VueLoaderPlugin(),
-        new HtmlWebpackPlugin({
+        new HtmlWebpackPlugin({ // plugin for custom templates, for example thymeleaf
             template: 'src/templates/one.html',
             filename: 'one.html',
-            chunks: ['one', 'vendors~one']
+            chunks: ['one', 'vendors~one'] // when splitChunks is set, webpack will print chunk names into console
         }),
         new HtmlWebpackPlugin({
             template: 'src/templates/two.html',
             filename: 'two.html',
             chunks: ['two']
         }),
-        new MergeIntoSingleFilePlugin({
+        new MergeIntoSingleFilePlugin({ // plugin to bundle old legacy libs and files into one
             files: [{
                 src: [
                     'src/js-includes/1.js',

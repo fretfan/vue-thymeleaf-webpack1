@@ -2,6 +2,7 @@
 <div>
     <span>Vue component!</span> this is msg: {{helloMsg}}
     <div>Count is: <b>{{ count }}</b> </div>
+    <div>Number of click: <b>{{ numberOfClicks }}</b> </div>
 </div>
 </template>
 
@@ -15,7 +16,8 @@ export default {
         }
     },
     props: {
-        count: String
+        count: String,
+        numberOfClicks: {type: Number, default: 0}
     },
     methods: {
         getMessage() {
