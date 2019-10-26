@@ -1,6 +1,6 @@
 <template>
 <div>
-    <span>Dratuti!</span> this is msg: {{helloMsg}}
+    <span>Vue component!</span> this is msg: {{helloMsg}}
     <div>Count is: <b>{{ count }}</b> </div>
 </div>
 </template>

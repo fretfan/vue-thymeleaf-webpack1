@@ -10,7 +10,7 @@ module.exports = {
         one: './src/one.js',
         two: './src/two.js'
     },
-//  devtool: 'source-map',
+    devtool: 'source-map',
     output: {
         // filename: 'static/[name].[hash].js', //use hash for prod build
         filename: 'static/[name].js',
@@ -20,6 +20,11 @@ module.exports = {
     resolve: {
         alias: {
             'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
+        }
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
         }
     },
     module: {
@@ -49,16 +54,16 @@ module.exports = {
                     }],
 
             },
-             {
-                    test: /\.(png|jp(e*)g|svg)$/,
-                        use: [{
-                            loader: 'url-loader',
-                            options: {
-                                limit: 8000, // Convert images < 8kb to base64 strings
-                                name: 'static/images/[hash]-[name].[ext]'
-                            }
-                        }]
+            {
+                test: /\.(png|jp(e*)g|svg)$/,
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: 8000, // Convert images < 8kb to base64 strings
+                        name: 'static/images/[hash]-[name].[ext]'
                     }
+                }]
+            }
 
         ],
     },
@@ -68,13 +73,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'src/templates/one.html',
             filename: 'one.html',
-            inject: 'body',
-            chunks: ['one']
+            chunks: ['one', 'vendors~one']
         }),
         new HtmlWebpackPlugin({
             template: 'src/templates/two.html',
             filename: 'two.html',
-            inject: 'body',
             chunks: ['two']
         }),
         new MergeIntoSingleFilePlugin({

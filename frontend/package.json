@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "watch": "webpack --watch"
+    "build": "webpack --progress",
+    "watch": "webpack --watch",
+    "profile": "webpack --profile --json > stats.json && webpack-bundle-analyzer -p 4205 stats.json"
   },
   "keywords": [],
   "author": "",
@@ -31,6 +32,7 @@
     "vue-loader": "^15.7.1",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.39.2",
+    "webpack-bundle-analyzer": "^3.5.2",
     "webpack-cli": "^3.3.7",
     "webpack-merge": "^4.2.1",
     "webpack-merge-and-include-globally": "^2.1.16"

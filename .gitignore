@@ -33,3 +33,4 @@ out/
 
 frontend/node_modules
 /src/main/resources/dist/
+stats.json
