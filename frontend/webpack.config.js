@@ -81,12 +81,12 @@ module.exports = {
             chunks: ['two']
         }),
         new MergeIntoSingleFilePlugin({ // plugin to bundle old legacy libs and files into one
+            // need to manually include into head with script tag
+            // better option is to import into webpack entry file
+            // todo minify if prod
             files: [{
                 src: [
-                    'src/js-includes/1.js',
-                    'src/js-includes/2.js',
-                    'src/js-includes/3.js',
-                    'src/js-includes/4.js',
+                    'src/js-includes/libs/lib-no-export3.js',
                     'src/js-includes/libs/jquery-3.4.1.js',
                 ],
                 dest: 'static/bundle.js'
