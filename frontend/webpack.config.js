@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -68,6 +69,10 @@ module.exports = {
         ],
     },
     plugins: [
+        new webpack.DefinePlugin({
+            RANDOM_STRING: JSON.stringify('5fa3b9'),
+            TWO: '1+1',
+        }),
         new CleanWebpackPlugin(), // clear output folder before build
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({ // plugin for custom templates, for example thymeleaf
