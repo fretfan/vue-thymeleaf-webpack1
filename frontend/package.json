@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --progress",
-    "watch": "webpack --watch",
-    "profile": "webpack --profile --json > stats.json && webpack-bundle-analyzer -p 4205 stats.json"
+    "build": "webpack --progress --config webpack.prod.js",
+    "watch": "webpack --watch --config webpack.dev.js",
+    "profile": "webpack --config webpack.prod.js --profile --json > stats.json && webpack-bundle-analyzer -p 4205 stats.json"
   },
   "keywords": [],
   "author": "",
@@ -34,7 +34,7 @@
     "webpack": "^4.39.2",
     "webpack-bundle-analyzer": "^3.5.2",
     "webpack-cli": "^3.3.7",
-    "webpack-merge": "^4.2.1",
+    "webpack-merge": "^4.2.2",
     "webpack-merge-and-include-globally": "^2.1.16"
   }
 }
