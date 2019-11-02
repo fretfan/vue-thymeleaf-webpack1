@@ -3,7 +3,8 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const MergeIntoSingleFilePlugin = require('webpack-merge-and-include-globally');
+const ConcatPlugin = require('webpack-concat-plugin');
+const HtmlWebpackInjector = require('html-webpack-injector');
 
 module.exports = {
     mode: 'development',
@@ -78,29 +79,28 @@ module.exports = {
         new HtmlWebpackPlugin({ // plugin for custom templates, for example thymeleaf
             template: 'src/templates/one.html',
             filename: 'one.html',
-            chunks: ['one', 'vendors~one'] // when splitChunks is set, webpack will print chunk names into console
+            chunks: ['one', 'vendors~one', 'bundle_head']
+            // when splitChunks is set, webpack will print chunk names into build log
         }),
         new HtmlWebpackPlugin({
             template: 'src/templates/two.html',
             filename: 'two.html',
-            chunks: ['two']
+            chunks: ['two', 'vendors~two', 'bundle_head']
         }),
-        new MergeIntoSingleFilePlugin({ // plugin to bundle old legacy libs and files into one
-            // need to manually include into head with script tag
-            // better option is to import into webpack entry file
-            // todo minify if prod
-            files: [{
-                src: [
-                    'src/js-includes/libs/lib-no-export3.js',
-                    'src/js-includes/libs/jquery-3.4.1.js',
+         new ConcatPlugin({
+             name: 'bundle_head',
+//           uglify: true,
+             outputPath: 'static/',
+//             sourceMap: true,
+//           fileName: '[name].[hash:8].js',
+             fileName: '[name].js',
+             filesToConcat: [
+                './src/js-includes/libs/lib-no-export3.js',
+                './src/js-includes/libs/lib-no-export4.js',
+                './src/js-includes/libs/jquery-3.4.1.js'
                 ],
-                dest: 'static/bundle.js'
-            }]
-//                              "vendor.css": [
-//                                  'node_modules/toastr/build/toastr.min.css'
-//                              ]
-
-        }),
+             }),
+        new HtmlWebpackInjector()
         // new MiniCssExtractPlugin({
         //     // Options similar to the same options in webpackOptions.output
         //     // all options are optional

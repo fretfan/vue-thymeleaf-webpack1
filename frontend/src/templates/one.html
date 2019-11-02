@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello</title>
-    <script src="static/bundle.js"></script>
+    <!-- webpack inserts js here-->
 </head>
 <body>
 <script>
+    runLibNoExport3();
+    runLibNoExport4();
     $(document).ready(()=> {
         console.log('global jquery working');
     })
-    runLibNoExport();
 </script>
 <h2 class="some-style">Page 1</h2>
 <h3 class="some-scss-style">Testing legacy scss</h3>
@@ -32,6 +33,6 @@
 <div class="heavy-image">
 
 </div>
-<!-- webpack inserts here-->
+<!-- webpack inserts js here-->
 </body>
 </html>

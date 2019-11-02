@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello</title>
-    <script src="static/bundle.js"></script>
-    <!--<script src="https://code.jquery.com/jquery-3.4.1.js"></script>-->
+    <!-- webpack inserts js here-->
 </head>
 <body>
 <script>
+    runLibNoExport3();
     $(function () {
         console.log('jquery good from bundle.js');
     });
-    runLibNoExport();
 </script>
 <h2 class="some-style"> Page 2</h2>
 <h3 id="two-msg">Default</h3>
 <h3 id="two-msg2">Default2</h3>
 <button onclick="two.setHelloMsg()">Change msg</button>
 <a href="/">Page1</a>
-<!-- webpack inserts here-->
+<!-- webpack inserts js here-->
 </body>
 </html>
