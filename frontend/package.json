@@ -10,7 +10,7 @@
     "bundle-stats": "npm run profile && npm run analyze",
     "analyze": "webpack --config webpack.prod.js --profile --json > stats.json",
     "profile": "webpack-bundle-analyzer -p 4205 stats.json ../src/main/resources/dist",
-    "lint": "eslint -f codeframe ./src/"
+    "lint": "eslint -f codeframe ./src/ --fix"
   },
   "keywords": [],
   "author": "",
