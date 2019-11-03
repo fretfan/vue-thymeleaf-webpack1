@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --progress --config webpack.prod.js",
     "watch": "webpack --watch --config webpack.dev.js",
-    "profile": "webpack --config webpack.prod.js --profile --json > stats.json && webpack-bundle-analyzer -p 4205 stats.json"
+    "bundle-stats": "npm run profile && npm run analyze",
+    "analyze": "webpack --config webpack.prod.js --profile --json > stats.json",
+    "profile": "webpack-bundle-analyzer -p 4205 stats.json ../src/main/resources/dist"
   },
   "keywords": [],
   "author": "",
