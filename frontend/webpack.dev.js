@@ -87,7 +87,7 @@ module.exports = {
             filename: 'two.html',
             chunks: ['two', 'vendors~two', 'bundle_head']
         }),
-         new ConcatPlugin({
+        new ConcatPlugin({
              name: 'bundle_head',
 //           uglify: true,
              outputPath: 'static/',

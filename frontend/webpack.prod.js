@@ -3,7 +3,8 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const MergeIntoSingleFilePlugin = require('webpack-merge-and-include-globally');
+const ConcatPlugin = require('webpack-concat-plugin');
+const HtmlWebpackInjector = require('html-webpack-injector');
 
 module.exports = {
     mode: 'production',
@@ -25,8 +26,15 @@ module.exports = {
     },
     optimization: {
         splitChunks: {
-            chunks: 'all' // adjust HtmlWebpackPlugin.chunks to include correct chunks into template
-        }
+             chunks: 'all',
+             cacheGroups: { // can split heavy dependencies into separate chunks
+               vendor: {
+                 test: /[\\/]node_modules[\\/]lodash[\\/]/,
+                 name: 'lodash',  // don't forget to include chunk into HtmlWepbackPlugin list
+                 chunks: 'all',
+               }
+             },
+           }
     },
     module: {
         rules: [
@@ -78,39 +86,25 @@ module.exports = {
         new HtmlWebpackPlugin({ // plugin for custom templates, for example thymeleaf
             template: 'src/templates/one.html',
             filename: 'one.html',
-            chunks: ['one', 'vendors~one'] // when splitChunks is set, webpack will print chunk names into console
+            chunks: ['one', 'vendors~one', 'bundle_head', 'lodash'] // when splitChunks is set, webpack will print chunk names into console
         }),
         new HtmlWebpackPlugin({
             template: 'src/templates/two.html',
             filename: 'two.html',
-            chunks: ['two']
+            chunks: ['two', 'vendors~two', 'bundle_head',]
         }),
-        new MergeIntoSingleFilePlugin({ // plugin to bundle old legacy libs and files into one
-            // need to manually include into head with script tag
-            // better option is to import into webpack entry file
-            // todo minify if prod
-            hash: true,
-            files: [{
-                src: [
-                    'src/js-includes/libs/lib-no-export3.js',
-                    'src/js-includes/libs/jquery-3.4.1.js',
-                ],
-                dest: 'static/bundle.js'
-            }],
-            // transform: {
-            //     'static/bundle.js': code =>
-            // }
-//                              "vendor.css": [
-//                                  'node_modules/toastr/build/toastr.min.css'
-//                              ]
-
-        }, filesMap => {console.log(filesMap)}),
-        // new MiniCssExtractPlugin({
-        //     // Options similar to the same options in webpackOptions.output
-        //     // all options are optional
-        //     filename: '[name].css',
-        //     chunkFilename: '[id].css',
-        //     ignoreOrder: false, // Enable to remove warnings about conflicting order
-        // }),
+        new ConcatPlugin({
+             name: 'bundle_head', // don't forget to include chunk into HtmlWepbackPlugin list
+             uglify: true,
+             outputPath: 'static/',
+        //   sourceMap: true,
+             fileName: '[name].[hash:8].js',
+             filesToConcat: [
+                 './src/js-includes/libs/lib-no-export3.js',
+                 './src/js-includes/libs/lib-no-export4.js',
+                 './src/js-includes/libs/jquery-3.4.1.js'
+                 ],
+             }),
+        new HtmlWebpackInjector()
     ]
 };
