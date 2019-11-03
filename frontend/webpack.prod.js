@@ -12,7 +12,7 @@ module.exports = {
         one: './src/one.js',
         two: './src/two.js'
     },
-    devtool: 'source-map',
+    devtool: 'nosources-source-map', // exposes file structure without filecontent
     output: {
         // filename: 'static/[name].[hash].js', //use hash for prod build
         filename: 'static/[name].[contenthash].js',
@@ -97,7 +97,7 @@ module.exports = {
              name: 'bundle_head', // don't forget to include chunk into HtmlWepbackPlugin list
              uglify: true,
              outputPath: 'static/',
-        //   sourceMap: true,
+//             sourceMap: true,
              fileName: '[name].[hash:8].js',
              filesToConcat: [
                  './src/js-includes/libs/lib-no-export3.js',

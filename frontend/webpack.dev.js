@@ -12,7 +12,7 @@ module.exports = {
         one: './src/one.js',
         two: './src/two.js'
     },
-    devtool: 'source-map',
+    devtool: 'cheap-module-eval-source-map', // fast source-maps for dev
     output: {
         // filename: 'static/[name].[hash].js', //use hash for prod build
         filename: 'static/[name].js',
@@ -89,10 +89,7 @@ module.exports = {
         }),
         new ConcatPlugin({
              name: 'bundle_head',
-//           uglify: true,
              outputPath: 'static/',
-//             sourceMap: true,
-//           fileName: '[name].[hash:8].js',
              fileName: '[name].js',
              filesToConcat: [
                 './src/js-includes/libs/lib-no-export3.js',
