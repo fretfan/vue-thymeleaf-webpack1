@@ -34,6 +34,14 @@ return {
     module: {
         rules: [
             {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    loader: 'eslint-loader',
+                    options: {
+                        formatter: "codeframe"
+                        }
+            },
+            {
                 test: /\.vue$/,
                 loader: 'vue-loader'
             },
@@ -49,8 +57,8 @@ return {
                         options: {
                             sourceMap: true // todo remove in prod bundle
                         }
-                    }
-                    , {
+                    },
+                    {
                         loader: 'sass-loader',
                         options: {
                             sourceMap: true // todo remove in prod bundle

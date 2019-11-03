@@ -10,8 +10,7 @@ import { runLib2 } from './js-includes/libs/custom-lib2';
 import * as $ from 'jquery';
 
 const vueApp = new Vue({
-  template:
-        `<div>
+  template: `<div>
              <hello count="123" 
              :numberOfClicks="numberOfClicks"
              />
