@@ -78,6 +78,7 @@ module.exports = {
     },
     plugins: [
         new webpack.DefinePlugin({
+        // pass environment variables here
             RANDOM_STRING: JSON.stringify('5fa3b9'),
             TWO: '1+1',
         }),

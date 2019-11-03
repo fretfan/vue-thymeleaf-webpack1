@@ -6,7 +6,9 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const ConcatPlugin = require('webpack-concat-plugin');
 const HtmlWebpackInjector = require('html-webpack-injector');
 
-module.exports = {
+module.exports = env => {
+console.log('cli var env.some_value is:' + env.some_value);
+return {
     mode: 'development',
     entry: {
         one: './src/one.js',
@@ -71,8 +73,10 @@ module.exports = {
     },
     plugins: [
         new webpack.DefinePlugin({
+        // pass environment variables here
             RANDOM_STRING: JSON.stringify('5fa3b9'),
             TWO: '1+1',
+            CLI_VALUE: JSON.stringify(env.some_value)
         }),
         new CleanWebpackPlugin(), // clear output folder before build
         new VueLoaderPlugin(),
@@ -106,4 +110,5 @@ module.exports = {
         //     ignoreOrder: false, // Enable to remove warnings about conflicting order
         // }),
     ]
+    }
 };

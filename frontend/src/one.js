@@ -42,3 +42,5 @@ legacy1.do1();
 legacy2.do2();
 runLib1();
 runLib2();
+console.log('------given environment values-------');
+console.log("CLI_VALUE" + CLI_VALUE);
