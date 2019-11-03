@@ -43,4 +43,5 @@ legacy2.do2();
 runLib1();
 runLib2();
 console.log('------given environment values-------');
+// eslint-disable-next-line no-undef
 console.log("CLI_VALUE" + CLI_VALUE);
