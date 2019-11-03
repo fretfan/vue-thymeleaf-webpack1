@@ -9,7 +9,8 @@
     "watch": "webpack --watch --config webpack.dev.js --env.some_value=132",
     "bundle-stats": "npm run profile && npm run analyze",
     "analyze": "webpack --config webpack.prod.js --profile --json > stats.json",
-    "profile": "webpack-bundle-analyzer -p 4205 stats.json ../src/main/resources/dist"
+    "profile": "webpack-bundle-analyzer -p 4205 stats.json ../src/main/resources/dist",
+    "lint": "eslint -f codeframe ./src/"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,9 @@
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "file-loader": "^4.2.0",
     "html-loader": "^0.5.5",
     "html-webpack-injector": "^1.1.2",
