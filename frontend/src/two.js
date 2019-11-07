@@ -1,5 +1,6 @@
 // import $ from 'jquery';
 import './css/legacy-style.css';
+import _ from 'lodash';
 
 export function setHelloMsg() {
   const msg = document.getElementById('two-msg');
@@ -12,5 +13,7 @@ export function setHelloMsg() {
 export function someFun() {
   console.log('called someFun');
 }
+const lodashTest = _.join(['a', 'b', 'c'], '~');
+console.log('LodashTest: ' + lodashTest);
 // eslint-disable-next-line no-undef
 console.log(`Printing env variables: TWO=${TWO}, RANDOM_STRING=${RANDOM_STRING}`);
