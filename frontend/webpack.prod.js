@@ -26,9 +26,10 @@ module.exports = {
     },
     optimization: {
         splitChunks: {
-             chunks: 'all',
-             cacheGroups: { // can split heavy dependencies into separate chunks
-               vendor: {
+            chunks: 'all',
+            name: 'vendors', // bundle everything from node_modules into vendors.js
+             cacheGroups: {
+               lodash: { // bundle lodash separately into lodash.js
                  test: /[\\/]node_modules[\\/]lodash[\\/]/,
                  name: 'lodash',  // don't forget to include chunk into HtmlWepbackPlugin list
                  chunks: 'all',
@@ -78,7 +79,7 @@ module.exports = {
     },
     plugins: [
         new webpack.DefinePlugin({
-        // pass environment variables here
+            // pass environment variables here
             RANDOM_STRING: JSON.stringify('5fa3b9'),
             TWO: '1+1',
         }),
@@ -87,25 +88,25 @@ module.exports = {
         new HtmlWebpackPlugin({ // plugin for custom templates, for example thymeleaf
             template: 'src/templates/one.html',
             filename: 'one.html',
-            chunks: ['one', 'vendors~one', 'bundle_head', 'lodash'] // when splitChunks is set, webpack will print chunk names into console
+            chunks: ['one', 'vendors', 'bundle_head', 'lodash'] // when splitChunks is set, webpack will print chunk names into console
         }),
         new HtmlWebpackPlugin({
             template: 'src/templates/two.html',
             filename: 'two.html',
-            chunks: ['two', 'vendors~two', 'bundle_head',]
+            chunks: ['two', 'vendors', 'bundle_head', 'lodash']
         }),
         new ConcatPlugin({
-             name: 'bundle_head', // don't forget to include chunk into HtmlWepbackPlugin list
-             uglify: true,
-             outputPath: 'static/',
+            name: 'bundle_head', // don't forget to include chunk into HtmlWepbackPlugin list
+            uglify: true,
+            outputPath: 'static/',
 //             sourceMap: true,
-             fileName: '[name].[hash:8].js',
-             filesToConcat: [
-                 './src/js-includes/libs/lib-no-export3.js',
-                 './src/js-includes/libs/lib-no-export4.js',
-                 './src/js-includes/libs/jquery-3.4.1.js'
-                 ],
-             }),
+            fileName: '[name].[hash:8].js',
+            filesToConcat: [
+                './src/js-includes/libs/lib-no-export3.js',
+                './src/js-includes/libs/lib-no-export4.js',
+                './src/js-includes/libs/jquery-3.4.1.js'
+            ],
+        }),
         new HtmlWebpackInjector()
     ]
 };
