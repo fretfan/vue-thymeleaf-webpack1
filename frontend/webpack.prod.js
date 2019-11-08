@@ -6,7 +6,9 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const ConcatPlugin = require('webpack-concat-plugin');
 const HtmlWebpackInjector = require('html-webpack-injector');
 
-module.exports = {
+module.exports = env => {
+//console.log('cli var env.some_value is:' + env.some_value);
+return {
     mode: 'production',
     entry: {
         one: './src/one.js',
@@ -78,10 +80,15 @@ module.exports = {
         ],
     },
     plugins: [
+    // uncomment to shim $ as jquery. Helpful for libs requiring jquery globally
+//        new webpack.ProvidePlugin({
+//           $: 'jquery',
+//         }),
         new webpack.DefinePlugin({
             // pass environment variables here
             RANDOM_STRING: JSON.stringify('5fa3b9'),
             TWO: '1+1',
+            CLI_VALUE: JSON.stringify(env.some_value)
         }),
         new CleanWebpackPlugin(), // clear output folder before build
         new VueLoaderPlugin(),
@@ -109,4 +116,5 @@ module.exports = {
         }),
         new HtmlWebpackInjector()
     ]
+    }
 };

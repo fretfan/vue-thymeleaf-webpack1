@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --progress --config webpack.prod.js",
+    "build": "webpack --progress --config webpack.prod.js --env.some_value=132",
     "watch": "webpack --watch --config webpack.dev.js --env.some_value=132",
-    "bundle-stats": "npm run analyze && npm run profile",
-    "analyze": "webpack --config webpack.prod.js --profile --json > stats.json",
+    "bundle-stats": "npm run analyze && npm run profile ",
+    "analyze": "webpack --config webpack.prod.js --env.some_value=132 --profile --json > stats.json",
     "profile": "webpack-bundle-analyzer -p 4205 stats.json ../src/main/resources/dist",
     "lint": "eslint -f codeframe ./src/",
     "lint-fix": "eslint -f codeframe ./src/ --fix"

@@ -7,7 +7,7 @@ const ConcatPlugin = require('webpack-concat-plugin');
 const HtmlWebpackInjector = require('html-webpack-injector');
 
 module.exports = env => {
-console.log('cli var env.some_value is:' + env.some_value);
+//console.log('cli var env.some_value is:' + env.some_value);
 return {
     mode: 'development',
     entry: {
@@ -28,7 +28,8 @@ return {
     },
     optimization: {
         splitChunks: {
-            chunks: 'all' // adjust HtmlWebpackPlugin.chunks to include correct chunks into template
+            chunks: 'all', // adjust HtmlWebpackPlugin.chunks to include correct chunks into template
+            name: 'vendors'
         }
     },
     module: {
@@ -80,6 +81,10 @@ return {
         ],
     },
     plugins: [
+    // uncomment to shim $ as jquery. Helpful for libs requiring jquery globally
+//        new webpack.ProvidePlugin({
+//               $: 'jquery',
+//             }),
         new webpack.DefinePlugin({
         // pass environment variables here
             RANDOM_STRING: JSON.stringify('5fa3b9'),
@@ -91,13 +96,13 @@ return {
         new HtmlWebpackPlugin({ // plugin for custom templates, for example thymeleaf
             template: 'src/templates/one.html',
             filename: 'one.html',
-            chunks: ['one', 'vendors~one', 'bundle_head']
+            chunks: ['one', 'vendors', 'bundle_head']
             // when splitChunks is set, webpack will print chunk names into build log
         }),
         new HtmlWebpackPlugin({
             template: 'src/templates/two.html',
             filename: 'two.html',
-            chunks: ['two', 'vendors~two', 'bundle_head']
+            chunks: ['two', 'vendors', 'bundle_head']
         }),
         new ConcatPlugin({
              name: 'bundle_head',
